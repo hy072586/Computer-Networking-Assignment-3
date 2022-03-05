@@ -4,11 +4,8 @@ from socket import *
 def smtp_client(port=1025, mailserver='127.0.0.1'):
     msg = "\r\n My message"
     endmsg = "\r\n.\r\n"
+    mailserver = (1025, '127.0.0.1')
 
-    mailserver = ("mail.smtp2go.com", 2525)
-
-    # Create socket called clientSocket and establish a TCP connection with mailserver and port
-    connectionSocket, addr = clientSocket.accept()
     clientSocket = socket(AF_INET,SOCK_STREAM)
     clientSocket.connect(mailserver)
 
