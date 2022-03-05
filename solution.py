@@ -1,10 +1,9 @@
 from socket import *
 
-
 def smtp_client(port=1025, mailserver='127.0.0.1'):
     msg = "\r\n My message"
     endmsg = "\r\n.\r\n"
-    mailserver = (1025, '127.0.0.1')
+    mailserver = ('127.0.0.1', 1025)
 
     clientSocket = socket(AF_INET,SOCK_STREAM)
     clientSocket.connect(mailserver)
@@ -17,7 +16,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
     recv1 = clientSocket.recv(1024).decode()
     
     # Send MAIL FROM command and handle server response.
-    clientSocket.send('Mail From:<alice@example.edu>\r\n')
+    clientSocket.send('MAIL FROM:<alice@example.edu>\r\n')
     recv1=clientSocket.recv(1024)
     
     # Send RCPT TO command and handle server response.
@@ -29,6 +28,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
     recv1 = clientSocket.recv(1024)
     
     # Send message data.
+    
     clientSocket.send('\r\n')
     clientSocket.send('something important\r\n')
 
